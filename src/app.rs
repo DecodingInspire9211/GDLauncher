@@ -18,8 +18,9 @@ struct GreetArgs<'a> {
 #[component]
 pub fn App() -> impl IntoView {
     view! {
-        <main class="bg-neutral-700">
+        <main class="flex bg-neutral-700">
             <Sidebar />
+            <ContentTopBar />
         </main>
 
     }
@@ -28,12 +29,33 @@ pub fn App() -> impl IntoView {
 #[component]
 pub fn Sidebar() -> impl IntoView {
     view! {
-        <div id="sidebar" class="flex flex-col w-[33dvw] bg-neutral-800 h-screen *:bg-neutral-600 text-neutral-100 *:rounded-md *:p-2 gap-2 p-2">
-            <button>Projects</button>
-            <button>Installs</button>
-            <button>Settings</button>
+        <div id="sidebar" class="flex flex-col flex-[1] bg-neutral-950/50 h-screen  text-neutral-100 ">
+            <div class=" flex bg-neutral-900/50 h-8 p-1 *:p-1 gap-1 text-neutral-100 backdrop-blur-md shadow-sm justify-center align-middle text-xs cursor-default select-none">
+                <p>Godot Engine - Launcher</p>
+            </div>
+
+            <div class="flex *:bg-neutral-900/50 flex-col *:rounded-md *:p-2 gap-2 p-2 backdrop-blur-md shadow-sm justify-start flex-1">
+                <button class="hover:bg-neutral-500/50 active:bg-neutral-700/20">Projects</button>
+                <button class="hover:bg-neutral-500/50 active:bg-neutral-700/20">Installs</button>
+            </div>
+
+            <div class="flex *:bg-neutral-900/50 flex-col *:rounded-md *:p-2 gap-2 p-2 backdrop-blur-md shadow-sm justify-end">
+                <button class="hover:bg-neutral-500/50 active:bg-neutral-700/20 content-end">Settings</button>
+            </div>
+
+
         </div>
 
+    }
+}
+
+#[component]
+pub fn ContentTopBar() -> impl IntoView {
+    view! {
+        <div class=" flex bg-neutral-900/50 flex-row flex-[3] h-8 p-1 *:bg-neutral-900/50 *:p-1 *:rounded-md gap-1 *:w-32 text-neutral-100 backdrop-blur-md shadow-sm justify-end text-xs">
+            <button class="hover:bg-neutral-400/50 active:bg-neutral-600/20">Add Project</button>
+            <button class="hover:bg-neutral-400/50 active:bg-neutral-600/20">Import Project</button>
+        </div>
     }
 }
 
