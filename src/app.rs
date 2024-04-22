@@ -18,7 +18,7 @@ struct GreetArgs<'a> {
 #[component]
 pub fn App() -> impl IntoView {
     view! {
-        <main>
+        <main class="bg-neutral-700">
             <Sidebar />
         </main>
 
@@ -28,7 +28,7 @@ pub fn App() -> impl IntoView {
 #[component]
 pub fn Sidebar() -> impl IntoView {
     view! {
-        <div id="sidebar">
+        <div id="sidebar" class="flex flex-col w-[33dvw] bg-neutral-800 h-screen *:bg-neutral-600 text-neutral-100 *:rounded-md *:p-2 gap-2 p-2">
             <button>Projects</button>
             <button>Installs</button>
             <button>Settings</button>
