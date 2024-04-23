@@ -554,6 +554,18 @@ video {
   --tw-contain-style:  ;
 }
 
+.z-30 {
+  z-index: 30;
+}
+
+.z-40 {
+  z-index: 40;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
 .flex {
   display: flex;
 }
@@ -641,6 +653,10 @@ video {
   padding: 0.5rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .align-middle {
   vertical-align: middle;
 }
@@ -655,6 +671,11 @@ video {
   color: rgb(245 245 245 / var(--tw-text-opacity));
 }
 
+.subpixel-antialiased {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
@@ -667,9 +688,16 @@ video {
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 :root {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  transition: all;
 }
 
 .\*\:w-32 > * {
@@ -678,6 +706,14 @@ video {
 
 .\*\:rounded-md > * {
   border-radius: 0.375rem;
+}
+
+.\*\:border-b-2 > * {
+  border-bottom-width: 2px;
+}
+
+.\*\:border-neutral-900\/50 > * {
+  border-color: rgb(23 23 23 / 0.5);
 }
 
 .\*\:bg-neutral-900\/50 > * {
@@ -698,6 +734,14 @@ video {
 
 .hover\:bg-neutral-500\/50:hover {
   background-color: rgb(115 115 115 / 0.5);
+}
+
+.active\:border-neutral-600\/0:active {
+  border-color: rgb(82 82 82 / 0);
+}
+
+.active\:border-neutral-700\/0:active {
+  border-color: rgb(64 64 64 / 0);
 }
 
 .active\:bg-neutral-600\/20:active {
