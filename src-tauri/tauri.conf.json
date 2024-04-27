@@ -1,7 +1,7 @@
 {
   "productName": "gdlauncher",
   "version": "0.0.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "at.decod.gdl",
   "build": {
     "beforeDevCommand": "trunk serve",
     "devUrl": "http://localhost:1420",
@@ -14,7 +14,7 @@
       {
         "title": "gdlauncher",
         "width": 800,
-        "height": 600
+        "height": 400
       }
     ],
     "security": {
@@ -22,6 +22,38 @@
     }
   },
   "bundle": {
+    "linux": {
+      "appimage": {
+        "bundleMediaFramework": false,
+        "files": {}
+      },
+      "deb": {
+        "files": {}
+      },
+      "rpm": {
+        "epoch": 0,
+        "files": {},
+        "release": "1"
+      }
+    },
+    "macOS": {
+      "dmg": {
+        "appPosition": {
+          "x": 180,
+          "y": 170
+        },
+        "applicationFolderPosition": {
+          "x": 480,
+          "y": 170
+        },
+        "windowSize": {
+          "height": 400,
+          "width": 660
+        }
+      },
+      "files": {},
+      "minimumSystemVersion": "10.13"
+    },
     "active": true,
     "targets": "all",
     "icon": [

@@ -1,20 +1,16 @@
+use std::{env::args, ptr::null};
+
 use leptos::leptos_dom::ev::SubmitEvent;
 use leptos::*;
 use serde::{Deserialize, Serialize};
 use serde_wasm_bindgen::to_value;
-use wasm_bindgen::prelude::*;
-
-use tauri::*
+use wasm_bindgen::{convert::js_value_vector_into_abi, prelude::*};
+use web_sys::{Event, FocusEvent};
 
 #[wasm_bindgen]
 extern "C" {
     #[wasm_bindgen(js_namespace = ["window", "__TAURI__", "core"])]
     async fn invoke(cmd: &str, args: JsValue) -> JsValue;
-}
-
-#[derive(Serialize, Deserialize)]
-struct GreetArgs<'a> {
-    name: &'a str,
 }
 
 #[component]
@@ -28,14 +24,19 @@ pub fn App() -> impl IntoView {
     }
 }
 
-pub fn getMeta() {}
+#[derive(Serialize, Deserialize)]
+struct OSArgs<'a> {
+    platform: &'a str,
+}
 
 #[component]
 pub fn Sidebar() -> impl IntoView {
+    window_event_listener(event, cb)
+
     view! {
         <div id="sidebar" class="flex flex-col flex-[1] bg-neutral-950/50 h-screen  text-neutral-100 z-40">
             <div class=" flex bg-neutral-900/50 h-8 p-1 *:p-1 gap-1 text-neutral-100 backdrop-blur-md z-50 shadow-sm justify-center align-middle text-xs cursor-default select-none">
-                <p>{appmeta.name}</p>
+                <p>GDLauncher - 0.0.0</p>
             </div>
 
             <div class="flex *:bg-neutral-900/50 *:border-b-2 *:border-neutral-900/50 flex-col *:rounded-md *:p-2 gap-2 p-2 backdrop-blur-md shadow-sm justify-start flex-1">
@@ -48,7 +49,7 @@ pub fn Sidebar() -> impl IntoView {
             </div>
 
             <div>
-                <Metadata />
+                <Metadata author/>
             </div>
 
 
@@ -68,14 +69,14 @@ pub fn ContentTopBar() -> impl IntoView {
 }
 
 #[component]
-pub fn Metadata() -> impl IntoView {
+pub fn Metadata(author: String) -> impl IntoView {
     view! {
         <div class="bg-neutral-900/50 h-8 p-1 *:p-1 gap-1 text-neutral-100 backdrop-blur-md z-50 shadow-sm justify-center align-middle text-xs cursor-default select-none text-center">
-            <p> " © 2024"</p>
+            <p>{author}</p>
         </div>
     }
 }
 
-fn version() -> String {
-    return Manager::package_info().name.to_string();
-}
+// fn version() -> String {
+//     return Manager::package_info().name.to_string();
+// }
