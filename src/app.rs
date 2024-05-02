@@ -49,7 +49,7 @@ pub fn Sidebar() -> impl IntoView {
     view! {
         <div id="sidebar" class="flex flex-col flex-[1] bg-neutral-950/50 h-screen  text-neutral-100 z-40">
             <div class=" flex bg-neutral-900/50 h-8 p-1 *:p-1 gap-1 text-neutral-100 backdrop-blur-md z-50 shadow-sm justify-center align-middle text-xs cursor-default select-none">
-                <p>{|name()|}</p>
+                <p>GDLauncher</p>
             </div>
 
             <div class="flex *:bg-neutral-900/50 *:border-b-2 *:border-neutral-900/50 flex-col *:rounded-md *:p-2 gap-2 p-2 backdrop-blur-md shadow-sm justify-start flex-1">
