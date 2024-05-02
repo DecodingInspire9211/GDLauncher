@@ -1,5 +1,6 @@
-use std::{env::args, ptr::null};
+use std::{borrow::Borrow, env::args, error::Error, ptr::null};
 
+use js_sys::Reflect::get;
 use leptos::leptos_dom::ev::SubmitEvent;
 use leptos::*;
 use serde::{Deserialize, Serialize};
@@ -11,6 +12,9 @@ use web_sys::{Event, FocusEvent};
 extern "C" {
     #[wasm_bindgen(js_namespace = ["window", "__TAURI__", "core"])]
     async fn invoke(cmd: &str, args: JsValue) -> JsValue;
+
+    #[wasm_bindgen(js_namespace = ["window", "__TAURI__", "app"])]
+    async fn getName() -> JsValue;
 }
 
 #[component]
@@ -31,12 +35,21 @@ struct OSArgs<'a> {
 
 #[component]
 pub fn Sidebar() -> impl IntoView {
-    window_event_listener(event, cb)
+    async fn name() -> Result<String, &'static str> {
+        let appName: JsValue;
+
+        appName = getName().await;
+
+        match appName.as_string() {
+            Some(appName) => Ok(appName),
+            None => Err("noApp"),
+        }
+    }
 
     view! {
         <div id="sidebar" class="flex flex-col flex-[1] bg-neutral-950/50 h-screen  text-neutral-100 z-40">
             <div class=" flex bg-neutral-900/50 h-8 p-1 *:p-1 gap-1 text-neutral-100 backdrop-blur-md z-50 shadow-sm justify-center align-middle text-xs cursor-default select-none">
-                <p>GDLauncher - 0.0.0</p>
+                <p>{|name()|}</p>
             </div>
 
             <div class="flex *:bg-neutral-900/50 *:border-b-2 *:border-neutral-900/50 flex-col *:rounded-md *:p-2 gap-2 p-2 backdrop-blur-md shadow-sm justify-start flex-1">
@@ -49,7 +62,7 @@ pub fn Sidebar() -> impl IntoView {
             </div>
 
             <div>
-                <Metadata author/>
+                <Metadata author="Kenneth William Beier".to_string()/>
             </div>
 
 
