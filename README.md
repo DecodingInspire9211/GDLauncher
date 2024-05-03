@@ -1,7 +1,4 @@
-# Tauri + Leptos
+[![build](https://github.com/DecodingInspire9211/GDLauncher/actions/workflows/rust.yml/badge.svg?branch=master)](https://github.com/DecodingInspire9211/GDLauncher/actions/workflows/rust.yml)
 
-This template should help get you started developing with Tauri and Leptos.
-
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+# GDLauncher
+Might be a useless project, but i just wanna try to make my own Godot Engine - Launcher
